@@ -1,0 +1,109 @@
+/* Contêiner da galeria de imagens */
+.image-gallery {
+  display: flex;
+  justify-content: center;  /* Centraliza as imagens horizontalmente */
+  align-items: center;      /* Centraliza as imagens verticalmente */
+  height: 100vh;            /* Ocupa toda a altura da tela */
+  gap: 20px;                /* Espaçamento entre as imagens */
+}
+
+/* Estilos para as imagens */
+.image-gallery img {
+  width: 200px;             /* Largura do quadrado */
+  height: 200px;            /* Altura do quadrado */
+  object-fit: cover;        /* Ajusta a imagem para cobrir o quadrado sem distorcer */
+  border-radius: 15px;      /* Bordas arredondadas */
+  cursor: pointer;         /* Cursor de ponteiro para indicar que é interativo */
+  transition: transform 0.3s ease-in-out; /* Transição suave para transformações */
+}
+
+/* Efeito de transformação na imagem ao passar o mouse */
+.image-gallery img:hover {
+  transform: scale(1.05);   /* Aumenta um pouco a imagem */
+}
+
+
+/* Estilo do modal */
+.ReactModal__Content {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Overlay do Modal */
+.Modal__Overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro e translúcido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s, opacity 0.3s ease;
+}
+
+/* Modal */
+.Modal__Content {
+  background-color: white;
+  width: 300px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: none;
+}
+
+/* Quando o modal estiver aberto */
+.Modal__Overlay.show {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.Modal__Content.show {
+  opacity: 1;
+  transform: scale(1);
+  display: block;
+}
+
+/* Botão */
+.Modal__Content button {
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.Modal__Content button:hover {
+  background-color: #ff2a2a;
+}
+
+
