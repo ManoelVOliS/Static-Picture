@@ -1,109 +1,117 @@
-/* Contêiner da galeria de imagens */
+/* Estilos gerais */
 .image-gallery {
   display: flex;
-  justify-content: center;  /* Centraliza as imagens horizontalmente */
-  align-items: center;      /* Centraliza as imagens verticalmente */
-  height: 100vh;            /* Ocupa toda a altura da tela */
-  gap: 20px;                /* Espaçamento entre as imagens */
-}
-
-/* Estilos para as imagens */
-.image-gallery img {
-  width: 200px;             /* Largura do quadrado */
-  height: 200px;            /* Altura do quadrado */
-  object-fit: cover;        /* Ajusta a imagem para cobrir o quadrado sem distorcer */
-  border-radius: 15px;      /* Bordas arredondadas */
-  cursor: pointer;         /* Cursor de ponteiro para indicar que é interativo */
-  transition: transform 0.3s ease-in-out; /* Transição suave para transformações */
-}
-
-/* Efeito de transformação na imagem ao passar o mouse */
-.image-gallery img:hover {
-  transform: scale(1.05);   /* Aumenta um pouco a imagem */
-}
-
-
-/* Estilo do modal */
-.ReactModal__Content {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  flex-wrap: wrap; /* Permite quebra de linha */
+  gap: 20px;
   padding: 20px;
-  border-radius: 10px;
-  text-align: center;
+  height: 100vh; /* Garante que o contêiner ocupe toda a tela */
 }
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-top: 20px;
+/* Ajuste para imagens */
+.image-gallery img {
+  width: 200px;
+  height: auto;
+  border-radius: 15px;
+  transition: transform 0.3s ease-in-out;
   cursor: pointer;
-  border-radius: 5px;
 }
 
-button:hover {
-  background-color: #45a049;
+/* Efeito ao passar o mouse */
+.image-gallery img:hover {
+  transform: scale(1.1);
 }
 
-/* Overlay do Modal */
+/* Layout para telas menores (smartphones) */
+@media (max-width: 768px) {
+  .image-gallery {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Mantém as imagens centralizadas */
+  }
+
+  .image-gallery img {
+    width: 80%;
+    max-width: 300px;
+  }
+}
+
+
+/* Layout para telas menores (smartphones) */
+@media (max-width: 768px) {
+  .image-gallery {
+    flex-direction: column; /* Deixa as imagens em coluna */
+    align-items: center;
+  }
+
+  .image-gallery img {
+    width: 80%; /* Ajusta a largura */
+    max-width: 300px;
+  }
+}
+
+/* Modal Overlay */
 .Modal__Overlay {
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro e translúcido */
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1000;
-  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   opacity: 0;
-  transition: visibility 0s linear 0.3s, opacity 0.3s ease;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
 }
 
-/* Modal */
+/* Quando o modal está aberto */
+.Modal__Overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Conteúdo do modal */
 .Modal__Content {
   background-color: white;
-  width: 300px;
+  width: 80%;
+  max-width: 300px;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
   font-family: 'Arial', sans-serif;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  display: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-20px);
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Quando o modal estiver aberto */
-.Modal__Overlay.show {
-  visibility: visible;
-  opacity: 1;
-  transition-delay: 0s;
-}
-
+/* Quando o modal está aberto */
 .Modal__Content.show {
-  opacity: 1;
-  transform: scale(1);
-  display: block;
+  transform: translateY(0);
 }
 
-/* Botão */
-.Modal__Content button {
-  background-color: #ff4c4c;
+/* Ajuste do modal para telas menores */
+@media (max-width: 480px) {
+  .Modal__Content {
+    width: 90%;
+    max-width: 250px;
+    padding: 15px;
+  }
+}
+
+/* Botão de fechar */
+button {
+  background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
-.Modal__Content button:hover {
-  background-color: #ff2a2a;
+button:hover {
+  background-color: #0056b3;
 }
-
-
